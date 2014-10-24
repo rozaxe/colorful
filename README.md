@@ -2,6 +2,10 @@
 Colorful
 ========
 
+[Let's play !](http://rozaxe.github.io/colorful)
+
+---
+
 Colorful is a game coding in Javascript.
 The objectif is to create new colors with primary colors.
 For that, you have different operation.
