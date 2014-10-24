@@ -1,0 +1,60 @@
+<!-- 2013 © Axel ЯB
+	 Licence GPL -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Editor</title>
+		<meta charset="UTF-8" />
+		<link rel="icon" href="favicon.png" />
+	</head>
+	<body>
+		<style type="text/css">
+			div {
+				font-family: 'Arial', sans-serif;
+			}
+			textarea {
+				width: 400px;
+				height: 150px;
+			}
+			#grid {
+				float: left;
+				margin: 25px;
+			}
+			#grid input {
+				width: 25px;
+				height: 25px;
+			}
+		</style>
+		<div id="grid"></div>
+		<div id="help">
+			Road ─│┌┐└┘├┤┬┴┼<br />
+			Mix ╣<br />
+			Invert ◘<br />
+			Light ☼<br />
+			Shadow ●<br />
+			Input □<br />
+			<span style="color:red"			>0 Rouge clair</span>
+			<span style="color:orange"		>1 Orange clair</span>
+			<span style="color:gold"		>2 Jaune clair</span>
+			<span style="color:yellowgreen"	>3 Vert clair</span>
+			<span style="color:blue"		>4 Turquoise</span>
+			<span style="color:violet"		>5 Rose</span><br />
+			<span style="color:red"			>6 Red</span>
+			<span style="color:orange"		>7 Orange</span>
+			<span style="color:gold"		>8 Yellow</span>
+			<span style="color:yellowgreen"	>9 Green</span>
+			<span style="color:blue"		>10 Blue</span>
+			<span style="color:violet"		>11 Violet</span><br />
+			<span style="color:red"			>12 Rouge fonce</span>
+			<span style="color:orange"		>13 Orange fonce</span>
+			<span style="color:gold"		>14 Jaune fonce</span>
+			<span style="color:yellowgreen"	>15 Vert fonce</span>
+			<span style="color:blue"		>16 Bleu fonce</span>
+			<span style="color:violet"		>17 Violet fonce</span>
+		</div>
+		<div style="clear:both" />
+		<input id="submit" type="submit" /><br />
+		<textarea id="result"></textarea>
+		<script type="text/javascript" src="editor/Main.js"></script>
+	</body>
+</html>

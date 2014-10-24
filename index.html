@@ -1,0 +1,122 @@
+<!-- 2013 © Axel ЯB
+	 Licence GPL -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Colorful</title>
+		<meta charset="UTF-8" />
+		<link rel="icon" href="favicon.png" />
+		<style type="text/css">
+			html, body {
+				margin: 0;
+				height: 100%;
+			}
+			body {
+				background-image: url('splash.png');
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			aside {
+
+				outline:none;
+
+				font-family: 'Arial', sans-serif;
+				font-size: 13px;
+				color: #444444;
+
+				width: 250px;
+				height: 100%;
+				background-color: #f7f7f7;
+				box-shadow: 0 0 0 1px #2b1210;
+
+				position: absolute;
+				left: -251px; /* -width */
+				transition:         left 0.6s;
+				-moz-transition:    left 0.6s;
+				-webkit-transition: left 0.6s;
+				-o-transition:      left 0.6s;
+				-ms-transition:     left 0.6s;
+			}
+			aside:hover,
+			aside:focus {
+				left: 0;
+			}
+			aside h1 {
+				font-size: 50px;
+				font-style: oblique;
+				text-align: center;
+			}
+			aside footer {
+				position: absolute;
+				bottom: 0;
+			}
+			aside footer a {
+				cursor: pointer;
+				text-decoration: underline;
+				color: inherit;
+				font-weight: 600;
+			}
+			canvas {
+				box-shadow: 0 0 0 1px #2b1210,
+							0 0 0 10px rgba(242, 242, 242, 0.7);
+				/* Div center (vertical && horizontal) */
+				position:absolute;
+				left: 50%;
+				top: 50%;
+				width: 448px;
+				height: 370px;
+				margin-left: -185px; /* -(width/2)  */
+				margin-top: -224px;  /* -(height/2) */
+			}
+			#strip {
+				position: absolute;
+				background-color: transparent;
+				top: 50%;
+				width: 0px;
+				height: 0px;
+				right: -50px;
+				margin-top: -25px;
+
+				border-top: 50px solid transparent;
+				border-bottom: 50px solid transparent;
+				border-left: 50px solid #2b1210;
+			}
+			.strong {
+				font-weight: 600;
+			}
+			.info {
+				margin: 13px;
+			}
+			.info img {
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<aside tabindex="-1">
+			<div id="strip"></div>
+			<h1 class="info">Niveau ?</h1>
+			<!--<a href="#1">1</a>-->
+			<p class="info"><img src="img/tb.png"     /><span class="strong">Route</span><br />Achemine la couleur.</p>
+			<p class="info"><img src="img/mix.png"    /><span class="strong">Mélangeur</span><br />Mélange deux couleurs.</p>
+			<p class="info"><img src="img/invert.png" /><span class="strong">Complémentaire</span><br />Complémente la couleur.</p>
+			<p class="info"><img src="img/light.png"  /><span class="strong">Éclaireur</span><br />Éclaircie une couleur.</p>
+			<p class="info"><img src="img/shadow.png" /><span class="strong">Fonceur</span><br />Fonce une couleur.</p>
+			<p class="info"><img src="img/in.png"     /><span class="strong">Entrée</span><br />Entrée pour couleur.</p>
+			<p class="info"><img src="img/play.png"     /><span class="strong">Lancer</span><br />Lance le mélange !</p>
+			<footer class="info">
+				Niveau <a onclick="prev_lvl()">Précédent</a> <a onclick="next_lvl()">Suivant</a><br /><br /><br />
+				Rozaxe <a href="http://creativecommons.org/licenses/by-sa/3.0/fr/">CC-BY-SA</a><br />
+				Sources disponibles <a href="./sources.zip">ici</a><br /><br />
+				Fond par <a href="http://www.renders-graphiques.fr/galerie/Autres-Inconnu-12-autre/taches-de-peinture-c-74819.htm">benbrahemb</a>
+			</footer>
+		</aside>
+		<canvas id="game"></canvas>
+		<!-- Game's Scripts Include -->
+		<script type="text/javascript" src="src/Declaration.js"></script>
+		<script type="text/javascript" src="src/Drawing.js"></script>
+		<script type="text/javascript" src="src/Levels.js"></script>
+		<script type="text/javascript" src="src/Main.js"></script>
+		<script type="text/javascript" src="src/Movement.js"></script>
+	</body>
+</html>

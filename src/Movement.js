@@ -11,7 +11,7 @@ function findColor(color) {
 			break
 		}
 	}
-	console.log(y +' '+x)
+	//console.log(y +' '+x)
 	return [y, x]
 }
 

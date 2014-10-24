@@ -25,6 +25,7 @@ var Menu
 var Images = []
 var Loaded = 0
 var Total = 18
+loadImage('end')
 loadImage('in')
 loadImage('invert')
 loadImage('lb')
@@ -36,6 +37,7 @@ loadImage('mix')
 loadImage('out')
 loadImage('play')
 loadImage('rb')
+loadImage('select')
 loadImage('shadow')
 loadImage('tb')
 loadImage('tl')
@@ -120,6 +122,16 @@ function prepare_map() {
 		}
 	}
 
+	// Add Pole to Menu
+	Menu = {}
+	Menu.selected = {}
+	Menu.propose = []
+
+	// Add pole into propose menu
+	MENUS[Level - 1].forEach(function (elem) {
+		Menu.propose.push(eval('new ' + elem))
+	})
+
 	States = 1
 
 }
@@ -168,6 +180,7 @@ function click_menu(x) {
 		play_map()
 	} else {
 		Menu.selected = Menu.propose[x]
+		draw_selected(x)
 	}
 }
 
@@ -197,12 +210,13 @@ function click_canvas(event) {
 			retry_lvl()
 		else if (230 <= mouseX && mouseX <= 294)
 			next_lvl()
+	} else {
+		if (mouseY > 320)
+			click_menu(Math.floor(mouseX / 50))
+		else
+			click_grid(Math.floor(mouseY / 32), Math.floor(mouseX / 32))
 	}
 
-	if (mouseY > 320)
-		click_menu(Math.floor(mouseX / 50))
-	else
-		click_grid(Math.floor(mouseY / 32), Math.floor(mouseX / 32))
 }
 
 function retry_lvl() {
@@ -211,16 +225,26 @@ function retry_lvl() {
 	draw_update()
 }
 
-function next_lvl() {
-	if (LEVELS[Level])
-		++Level
-
-	document.getElementsByTagName('h1')[0].innerHTML = 'Level ' + Level
+function x_lvl() {
+	document.getElementsByTagName('h1')[0].innerHTML = 'Niveau ' + Level
 	parent.location.hash = Level;
 
 	prepare_map()
 	// Draw background
 	draw_update()
+
+}
+
+function prev_lvl() {
+	if (LEVELS[Level-2])
+		--Level
+	x_lvl()
+}
+
+function next_lvl() {
+	if (LEVELS[Level])
+		++Level
+	x_lvl()
 }
 
 function game_ready() {
@@ -242,6 +266,8 @@ function game_ready() {
 
 window.onload = function() {
 
+	document.getElementsByTagName('aside')[0].focus()
+
 	Canvas = document.getElementById('game')
 	Canvas.width  = COLUMNS * 32
 	Canvas.height = LINES * 32 + 50
@@ -261,7 +287,7 @@ window.onload = function() {
 	else
 		Level = 1
 
-	document.getElementsByTagName('h1')[0].innerHTML = 'Level ' + Level
+	document.getElementsByTagName('h1')[0].innerHTML = 'Niveau ' + Level
 	parent.location.hash = Level;
 
 	game_ready()

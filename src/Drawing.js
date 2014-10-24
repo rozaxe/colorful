@@ -3,7 +3,10 @@
 
 // Drawing functions
 function drawInput(y, x) {
+	if (Map[y][x].color == BLANC)
+		return
 	Context.fillStyle = Map[y][x].color
+	//console.log(Map[y][x].color)
 	Context.fillRect(x * 32 + 11, y * 32 + 11, 10, 10)
 	if (States < 2)
 		return
@@ -127,20 +130,11 @@ function draw_background() {
 function draw_update() {
 	Context.fillStyle = BLANC
 	Context.fillRect(0, 0, Canvas.width, LINES * 32)
+	draw_menu()
 	draw_background()
 }
 
 function draw_menu() {
-
-	// Add Pole to Menu
-	Menu = {}
-	Menu.selected = {}
-	Menu.propose = []
-
-	// Add pole into propose menu
-	MENUS[Level - 1].forEach(function (elem) {
-		Menu.propose.push(eval('new ' + elem))
-	})
 
 	// Draw Menu
 	Context.fillStyle = '#f7f7f7'
@@ -171,9 +165,14 @@ function draw_menu() {
 	Context.drawImage(Images['play'], 409, 329)
 }
 
+function draw_selected(x) {
+	draw_menu()
+	Context.drawImage(Images['select'], x * 50 + 16, 9 + 24 + LINES * 32)
+}
+
 function draw_end(win) {
 	if (win)
-		Context.drawImage(Images['win'], 118, 86)
+		Context.drawImage(Images[(Level == LEVELS.length) ? 'end' : 'win'], 118, 86)
 	else
 		Context.drawImage(Images['lose'], 118, 86)
 }
